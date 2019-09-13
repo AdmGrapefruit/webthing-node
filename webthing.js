@@ -7,4 +7,5 @@ module.exports = {
   Thing: require('./lib/thing'),
   Value: require('./lib/value'),
   ...require('./lib/server'),
+  CoapWebThingServer: require('./lib/coapserver'),
 };
