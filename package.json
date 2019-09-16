@@ -30,7 +30,7 @@
   "dependencies": {
     "ajv": "^6.10.2",
     "body-parser": "^1.19.0",
-    "coap": "^0.23.1",
+    "coap": "github:AdmGrapefruit/node-coap#master",
     "coap-router": "github:AdmGrapefruit/coap-router#master",
     "dnssd": "^0.4.1",
     "express": "^4.17.1",
