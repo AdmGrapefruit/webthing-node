@@ -8,7 +8,8 @@
     "node": "NODE_PATH=. node",
     "start": "NODE_PATH=. node example/multiple-things",
     "test": "make test",
-    "simplest": "NODE_PATH=. node example/simplest-thing"
+    "simplest": "NODE_PATH=. node example/simplest-thing",
+    "testCoap": "mocha"
   },
   "repository": {
     "type": "git",
@@ -34,11 +35,13 @@
     "coap-router": "github:AdmGrapefruit/coap-router#master",
     "dnssd": "^0.4.1",
     "express": "^4.17.1",
-    "express-ws": "^4.0.0"
+    "express-ws": "^4.0.0",
+    "install": "^0.13.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "eslint": "^6.2.2",
+    "mocha": "^6.2.0",
     "uuid": "^3.3.3"
   }
 }

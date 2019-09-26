@@ -8,7 +8,7 @@ const {
   Property,
   Thing,
   Value,
-  WebThingServer,
+  CoapWebThingServer,
 } = require('../index');
 const uuidv4 = require('uuid/v4');
 
@@ -139,21 +139,6 @@ class FakeGpioHumiditySensor extends Thing {
           unit: 'percent',
           readOnly: true,
         }));
-
-    // Poll the sensor reading every 3 seconds
-    setInterval(() => {
-      // Update the underlying value, which in turn notifies all listeners
-      const newLevel = this.readFromGPIO();
-      console.log('setting new humidity level:', newLevel);
-      this.level.notifyOfExternalUpdate(newLevel);
-    }, 3000);
-  }
-
-  /**
-   * Mimic an actual sensor updating its reading every couple seconds.
-   */
-  readFromGPIO() {
-    return Math.abs(70.0 * Math.random() * (-0.5 + Math.random()));
   }
 }
 
@@ -166,9 +151,10 @@ function runServer() {
 
   // If adding more than one thing, use MultipleThings() with a name.
   // In the single thing case, the thing's name will be broadcast.
-  const server = new WebThingServer(new MultipleThings([light, sensor],
-                                                       'LightAndTempDevice'),
-                                    8888);
+  const server = new CoapWebThingServer(new MultipleThings([light, sensor],
+    // eslint-disable-next-line max-len
+                                                           'LightAndTempDevice'),
+                                        5683);
 
   process.on('SIGINT', () => {
     server.stop().then(() => process.exit()).catch(() => process.exit());
