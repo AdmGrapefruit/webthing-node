@@ -139,6 +139,21 @@ class FakeGpioHumiditySensor extends Thing {
           unit: 'percent',
           readOnly: true,
         }));
+
+    // Poll the sensor reading every 3 seconds
+    setInterval(() => {
+      // Update the underlying value, which in turn notifies all listeners
+      const newLevel = this.readFromGPIO();
+      console.log('setting new humidity level:', newLevel);
+      this.level.notifyOfExternalUpdate(newLevel);
+    }, 3000);
+  }
+
+  /**
+   * Mimic an actual sensor updating its reading every couple seconds.
+   */
+  readFromGPIO() {
+    return Math.abs(70.0 * Math.random() * (-0.5 + Math.random()));
   }
 }
 
