@@ -5,7 +5,7 @@
 [![NPM](https://img.shields.io/npm/v/webthing.svg)](https://www.npmjs.com/package/webthing)
 [![license](https://img.shields.io/badge/license-MPL--2.0-blue.svg)](LICENSE)
 
-Implementation of an HTTP [Web Thing](https://iot.mozilla.org/wot/).
+Implementation of an HTTP and CoAP [Web Thing](https://iot.mozilla.org/wot/).
 
 # Installation
 
@@ -78,6 +78,8 @@ Now we can add our newly created thing to the server and start it:
 ```javascript
 // If adding more than one thing, use MultipleThings() with a name.
 // In the single thing case, the thing's name will be broadcast.
+
+// For CoAP-based WebThing use CoapWebThingServer instead
 const server = new WebThingServer(SingleThing(light), 8888);
 
 process.on('SIGINT', () => {
