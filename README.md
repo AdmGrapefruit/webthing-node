@@ -5,19 +5,19 @@
 [![NPM](https://img.shields.io/npm/v/webthing.svg)](https://www.npmjs.com/package/webthing)
 [![license](https://img.shields.io/badge/license-MPL--2.0-blue.svg)](LICENSE)
 
-Implementation of an HTTP [Web Thing](https://iot.mozilla.org/wot/).
+Implementation of an HTTP and CoAP [Web Thing](https://iot.mozilla.org/wot/).
 
 # Installation
 
 `webthing` can be installed via `npm`, as such:
 
 ```shell
-$ npm install webthing
+$ npm install AdmGrapefruit/webthing-node#master
 ```
 
 # Example
 
-In this example we will set up a dimmable light and a humidity sensor (both using fake data, of course). Both working examples can be found in [here](https://github.com/mozilla-iot/webthing-node/tree/master/example).
+In this example we will set up a dimmable light and a humidity sensor (both using fake data, of course). Both working examples can be found in [here](https://github.com/AdmGrapefruit/webthing-node/tree/master/example).
 
 ## Dimmable Light
 
@@ -73,7 +73,7 @@ light.addProperty(
     }));
 ```
 
-Now we can add our newly created thing to the server and start it:
+Now we can add our newly created thing to the server and start it (for a CoAP-based WebThing use CoapWebThingServer instead):
 
 ```javascript
 // If adding more than one thing, use MultipleThings() with a name.
