@@ -12,12 +12,12 @@ Implementation of an HTTP and CoAP [Web Thing](https://iot.mozilla.org/wot/).
 `webthing` can be installed via `npm`, as such:
 
 ```shell
-$ npm install webthing
+$ npm install AdmGrapefruit/webthing-node#master
 ```
 
 # Example
 
-In this example we will set up a dimmable light and a humidity sensor (both using fake data, of course). Both working examples can be found in [here](https://github.com/mozilla-iot/webthing-node/tree/master/example).
+In this example we will set up a dimmable light and a humidity sensor (both using fake data, of course). Both working examples can be found in [here](https://github.com/AdmGrapefruit/webthing-node/tree/master/example).
 
 ## Dimmable Light
 
@@ -73,13 +73,11 @@ light.addProperty(
     }));
 ```
 
-Now we can add our newly created thing to the server and start it:
+Now we can add our newly created thing to the server and start it (for a CoAP-based WebThing use CoapWebThingServer instead):
 
 ```javascript
 // If adding more than one thing, use MultipleThings() with a name.
 // In the single thing case, the thing's name will be broadcast.
-
-// For CoAP-based WebThing use CoapWebThingServer instead
 const server = new WebThingServer(SingleThing(light), 8888);
 
 process.on('SIGINT', () => {
